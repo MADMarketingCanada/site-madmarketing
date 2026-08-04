@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://madmarketing.ca/sitemap.xml
+Sitemap: https://www.madmarketing.ca/sitemap.xml

@@ -6,12 +6,14 @@
 
 DirectoryIndex index.html
 
-# ---- Toujours en https et sans www ----
+# ---- Toujours en https et avec www ----
+# (Note : ce fichier .htaccess n'est pas utilisé sur Cloudflare Pages,
+# qui l'ignore. Il ne s'appliquerait que sur un hébergement Apache/cPanel.)
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} ^www\. [NC]
-RewriteRule ^(.*)$ https://madmarketing.ca/$1 [R=301,L]
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule ^(.*)$ https://www.madmarketing.ca/$1 [R=301,L]
 </IfModule>
 
 # ---- Cache navigateur (images, vidéo : 30 jours; CSS/JS : 7 jours,
