@@ -234,6 +234,39 @@ a:focus-visible, button:focus-visible {
   padding: 11px 14px;
   border-radius: 10px;
   font-size: 0.92rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-dropdown .svc-ico { width: 17px; height: 17px; color: var(--accent-soft); flex-shrink: 0; }
+.nav-mobile .nav-sub { display: flex; align-items: center; gap: 10px; }
+.nav-mobile .svc-ico { width: 16px; height: 16px; color: var(--accent-soft); flex-shrink: 0; }
+
+/* ---------- Sélecteur de langue (FR / ENG) ---------- */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+}
+.lang-switch a {
+  color: var(--muted);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease;
+}
+.lang-switch a:hover { color: var(--fg); }
+.lang-switch .lang-active {
+  color: var(--fg);
+  padding-bottom: 2px;
+  border-bottom: 2px solid var(--accent);
+}
+.lang-switch .lang-sep { color: rgba(179, 168, 194, 0.45); font-weight: 600; }
+@media (max-width: 720px) {
+  .lang-switch { margin-left: auto; margin-right: 12px; }
 }
 .nav-dropdown a:hover { background: var(--surface-hover); }
 .nav-dropdown a.active::after { display: none; }

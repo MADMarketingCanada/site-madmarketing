@@ -78,19 +78,28 @@ navMobile.querySelectorAll('a').forEach(a =>
       setTimeout(() => b.remove(), 450);
     }
     // Si le visiteur a suivi le lien du bandeau vers la politique de
-    // confidentialité, on le ramène à l'accueil une fois son choix fait.
+    // confidentialité, on le ramène à l'accueil (dans sa langue) une fois
+    // son choix fait.
     if (location.pathname.indexOf('politique-confidentialite') !== -1) {
       setTimeout(() => { location.href = '/index.html'; }, 350);
+    } else if (location.pathname.indexOf('privacy-policy') !== -1) {
+      setTimeout(() => { location.href = '/en/index.html'; }, 350);
     }
   };
+  const enAnglais = location.pathname.indexOf('/en/') !== -1;
   const ouvrir = () => {
     if (bandeau) return;
     bandeau = document.createElement('div');
     bandeau.className = 'cookie-banner';
     bandeau.setAttribute('role', 'dialog');
-    bandeau.setAttribute('aria-label', 'Consentement aux témoins');
-    bandeau.innerHTML =
-      '<p>Nous utilisons des témoins (cookies) pour analyser la fréquentation du site et mesurer nos campagnes. <a href="/politique-confidentialite.html">Politique de confidentialité</a></p>' +
+    bandeau.setAttribute('aria-label', enAnglais ? 'Cookie consent' : 'Consentement aux témoins');
+    bandeau.innerHTML = enAnglais
+      ? '<p>We use cookies to measure site traffic and the performance of our campaigns. <a href="/en/privacy-policy.html">Privacy policy</a></p>' +
+        '<div class="cookie-actions">' +
+        '<button type="button" class="btn btn-primary btn-sm" data-choix="oui">Accept</button>' +
+        '<button type="button" class="btn btn-ghost btn-sm" data-choix="non">Decline</button>' +
+        '</div>'
+      : '<p>Nous utilisons des témoins (cookies) pour analyser la fréquentation du site et mesurer nos campagnes. <a href="/politique-confidentialite.html">Politique de confidentialité</a></p>' +
       '<div class="cookie-actions">' +
       '<button type="button" class="btn btn-primary btn-sm" data-choix="oui">Accepter</button>' +
       '<button type="button" class="btn btn-ghost btn-sm" data-choix="non">Refuser</button>' +
@@ -109,7 +118,7 @@ navMobile.querySelectorAll('a').forEach(a =>
     const lien = document.createElement('a');
     lien.href = '#';
     lien.className = 'cookie-manage';
-    lien.textContent = 'Gérer les témoins';
+    lien.textContent = enAnglais ? 'Manage cookies' : 'Gérer les témoins';
     lien.addEventListener('click', (e) => { e.preventDefault(); ouvrir(); });
     bas.appendChild(lien);
   }
