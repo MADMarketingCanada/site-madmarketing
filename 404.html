@@ -29,6 +29,15 @@ a.lien{color:#d98aff;text-decoration:none;font-weight:700}
 <a class="btn" href="/index.html">Retour à l'accueil</a>
 <p class="en">This page doesn't exist. <a class="lien" href="/en/index.html">Go to the English&nbsp;homepage</a></p>
 </div>
-<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a95d1a9e48bae53987b834c"></script>
+<script>
+/* Chatbot GHL : chargement différé de 30 secondes après l'affichage de la page */
+setTimeout(function () {
+  var s = document.createElement('script');
+  s.src = 'https://widgets.leadconnectorhq.com/loader.js';
+  s.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
+  s.setAttribute('data-widget-id', '6a95d1a9e48bae53987b834c');
+  document.body.appendChild(s);
+}, 30000);
+</script>
 </body>
 </html>
